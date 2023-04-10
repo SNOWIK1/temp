@@ -1,0 +1,44 @@
+/////////////////////////////////////////////   TASK 1   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            bool isTrue = false;
+            do {
+
+                Console.WriteLine("\nEnter date of birth (dd.mm.yyyy)");
+                string str = Console.ReadLine();
+                string[] arr = str.Split(".");
+                try
+                {
+
+                    int year = Int32.Parse(arr[2]);
+
+                    if (year > 2020 && Int32.Parse(arr[1]) > 12)
+                    {
+                        Console.WriteLine("\nInvalid month");
+                    }
+
+                } catch
+                {
+                    Console.WriteLine("\nEnter date of birth in dd.mm.yyyy format");
+                }
+
+                Console.WriteLine("\nEnter your age");
+                string ageStr = Console.ReadLine();
+
+                try {
+
+                    int age = Int32.Parse(ageStr);
+                    if (age<0)
+                    {
+                        Console.WriteLine("\nEnter the correct age");
+                    } else
+                    {
+                        isTrue = true;
+                    }
+
+                } catch {
+
+                    Console.WriteLine("\nEnter the correct age");
+
+                }
+
+            } while (!isTrue);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
