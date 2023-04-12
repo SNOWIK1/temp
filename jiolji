@@ -1,8 +1,40 @@
-/////////////////////////////////////////////   TASK 1   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            bool isTrue = false;
-            do {
+using System;
 
-                Console.WriteLine("\nEnter date of birth (dd.mm.yyyy)");
+namespace Exceptions
+{
+    class Program
+    {
+
+        static string getMonth(int month)
+        {
+            switch (month)
+            {
+                case 1: return "January";
+                case 2: return "February";
+                case 3: return "March";
+                case 4: return "April";
+                case 5: return "May";
+                case 6: return "June";
+                case 7: return "July";
+                case 8: return "August";
+                case 9: return "September";
+                case 10: return "October";
+                case 11: return "November";
+                case 12: return "December";
+                default: return "Unexpected error";
+
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            /////////////////////////////////////////////   TASK 1   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            bool isTrue = false;
+            do
+            {
+
+                Console.WriteLine("\nTASK 1\nEnter date of birth (dd.mm.yyyy)");
                 string str = Console.ReadLine();
                 string[] arr = str.Split(".");
                 try
@@ -15,7 +47,8 @@
                         Console.WriteLine("\nInvalid month");
                     }
 
-                } catch
+                }
+                catch
                 {
                     Console.WriteLine("\nEnter date of birth in dd.mm.yyyy format");
                 }
@@ -23,22 +56,108 @@
                 Console.WriteLine("\nEnter your age");
                 string ageStr = Console.ReadLine();
 
-                try {
+                try
+                {
 
                     int age = Int32.Parse(ageStr);
-                    if (age<0)
+                    if (age < 0)
                     {
                         Console.WriteLine("\nEnter the correct age");
-                    } else
+                    }
+                    else
                     {
                         isTrue = true;
                     }
 
-                } catch {
+                }
+                catch
+                {
 
                     Console.WriteLine("\nEnter the correct age");
 
                 }
 
             } while (!isTrue);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////   TASK 2   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            double[] a = new double[22];
+            double[] b = new double[22];
+            double[] c = new double[22];
+
+            double x = 0;
+
+            Console.WriteLine("\n\nTASK 2");
+                for (int i = 0; i< a.Length; i++)
+            {
+
+            try
+                {
+                 
+                   a[i] = Math.Log(x - 1);
+                   x += 0.5;
+
+                }
+
+
+            catch
+                {
+                    a[i] = 0;
+
+                }
+            finally
+                {
+                    Random rand = new Random();
+                    b[i] = rand.Next(0, 10);
+                }
+              
+            }
+
+                for (int i = 0; i<c.Length; i++)
+            {
+
+                try
+                {
+                    c[i] = a[i] + 1 / b[i];
+                }
+                catch (DivideByZeroException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                finally
+                {
+                    Console.WriteLine(c[i]);
+                }
+
+            }
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            /////////////////////////////////////////  EXTRA   TASK 3   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            Console.WriteLine("\nEXTRA TASK 3\n Enter a number between 1 and 365:");
+            int day = Int32.Parse(Console.ReadLine());
+
+            try
+            {
+                if (day < 1 || day > 365) {
+
+                    throw new Exception("Incorrect number");
+
+                }
+                DateTime date = new DateTime(DateTime.Now.Year, 1, 1).AddDays(day - 1);
+                Console.WriteLine($"{date.Day} {getMonth(date.Month)}");
+            }
+            catch(Exception e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
